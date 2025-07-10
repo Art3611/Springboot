@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "perro",
+    "price": 88.99,
+    "cuantity": 10
+  },
+  {
+    "id": 2,
+    "name": "caballo",
+    "price": 55.99,
+    "cuantity": 16
+  },
+  {
+    "id": 3,
+    "name": "conejo",
+    "price": 33.99,
+    "cuantity": 5
+  },
+  {
+    "id": 4,
+    "name": "leoleolo",
+    "price": 12.99,
+    "cuantity": 4
+  }
+]

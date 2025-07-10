@@ -1,8 +1,13 @@
 package com.example.demo.controllers;
 
 import com.example.demo.modeldomain.Customer;
+import org.apache.coyote.Response;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -22,28 +27,37 @@ public class CustomerRestController {
     @RequestMapping(method = RequestMethod.GET)
     //@GetMapping
     //@GetMapping("/clients")
-    public List<Customer> getCustomers(){
+    public ResponseEntity<List<Customer>> getCustomers(){
 
-        return customers;
+        return ResponseEntity.ok(customers);
     }
 
     @RequestMapping(value = "/{username}", method = RequestMethod.GET)
     //@GetMapping("/{username}")
-    public Customer getClient(@PathVariable  String username){
+    public ResponseEntity<?> getClient(@PathVariable  String username){
         for(Customer c : customers ){
             if(c.getUsername().equalsIgnoreCase(username)){
-                return c;
+                return ResponseEntity.ok(c);
             }
         }
 
-        return null;
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cliente no encontrado "+ username);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     //@PostMapping
-    public Customer postClient(@RequestBody Customer customer){
+    public ResponseEntity<?> postClient(@RequestBody Customer customer){
         customers.add(customer);
-        return customer;
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{username}")
+                .buildAndExpand(customer.getUsername())
+                .toUri();
+
+
+       // return ResponseEntity.created(location).build();
+        return ResponseEntity.created(location).body(customer);
+
     }
 
     @RequestMapping(method = RequestMethod.PUT)
