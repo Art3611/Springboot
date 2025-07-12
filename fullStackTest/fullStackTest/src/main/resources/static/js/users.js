@@ -1,0 +1,29 @@
+// Call the dataTables jQuery plugin
+$(document).ready(function() {
+  loadUsers();
+});
+
+async function loadUsers() {
+  const request = await fetch('users', {
+    method: 'GET',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    }
+  });
+
+  const users = await request.json();
+
+  let listHtml = "";
+  for (let user of users) {
+    let userhtml = '<tr><td>123</td><td>' + user.name + '</td><td>' + user.email + '</td><td>' + user.phone + '</td><td><a href="#" class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a></td></tr>';
+    listHtml += userhtml;
+  }
+
+  document.querySelector('#users tbody').innerHTML = listHtml;
+
+  // Inicializa DataTables después de insertar los datos
+  $('#users').DataTable();
+
+
+}
