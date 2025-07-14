@@ -1,6 +1,7 @@
 package com.example.fullStackTest.dao;
 
 import com.example.fullStackTest.models.User;
+import jakarta.persistence.Entity;
 import jakarta.persistence.PersistenceContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,8 +18,22 @@ public class UserDaoImp implements UserDao {
     @Override
     public List<User> getUsers() {
 
-        String query = "FROM users";
+        String query = "FROM User";
         return entityManager.createQuery(query).getResultList();
 
     }
+
+    @Override
+    public void deleteUser(Long id) {
+        User user = entityManager.find(User.class,id);
+        entityManager.remove(user);
+
+    }
+
+    @Override
+    public void registerUser(User user) {
+        entityManager.merge(user);
+    }
+
+
 }
