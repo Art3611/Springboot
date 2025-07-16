@@ -1,6 +1,7 @@
 // Call the dataTables jQuery plugin
 $(document).ready(function() {
   loadUsers();
+
 });
 
 async function loadUsers() {
@@ -17,22 +18,23 @@ async function loadUsers() {
 
   let listHtml = "";
   for (let user of users) {
+    let phone = user.phone == null ? '-' : user.phone;
     let deleteButon = '<a href="#" onclick="deleteUser('+user.id+')"class="btn btn-danger btn-circle btn-sm"><i class="fas fa-trash"></i></a>'
-    let userhtml = '<tr><td>123</td><td>' + user.name + '</td><td>' + user.email + '</td><td>' + user.phone + '</td><td>'+deleteButon+'</td></tr>';
+    let userhtml = '<tr><td>123</td><td>' + user.name + '</td><td>' + user.email + '</td><td>' + phone + '</td><td>'+deleteButon+'</td></tr>';
     listHtml += userhtml;
   }
 
   document.querySelector('#users tbody').innerHTML = listHtml;
 
   // Inicializa DataTables después de insertar los datos
-  $('#users').DataTable();
 
+$('#users').DataTable();
 
 }
 
 async function deleteUser(id){
 
-if (!onfirm('Desea eliminar este usuario?')){
+if (!confirm('Desea eliminar este usuario?')){
 return;
 }
     const request = await fetch('user/'+ id, {
