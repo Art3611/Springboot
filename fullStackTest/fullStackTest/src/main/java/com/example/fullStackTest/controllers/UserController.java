@@ -3,8 +3,10 @@ package com.example.fullStackTest.controllers;
 
 import com.example.fullStackTest.dao.UserDao;
 import com.example.fullStackTest.models.User;
+import com.example.fullStackTest.utils.JWTUtil;
 import de.mkammerer.argon2.Argon2;
 import de.mkammerer.argon2.Argon2Factory;
+import org.apache.tomcat.util.http.parser.Authorization;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +18,9 @@ public class UserController {
 
     @Autowired
     private UserDao userDao;
+    @Autowired
+    private JWTUtil jwtUtil;
+
 
     @RequestMapping( value = "/user/{id}" ,method = RequestMethod.GET)
     public User getUser(@PathVariable long id){
@@ -25,7 +30,16 @@ public class UserController {
     }
 
     @RequestMapping( value = "/users", method = RequestMethod.GET)
-    public List<User> getUsers(){
+    public List<User> getUsers(@RequestHeader(value = "Authorization")String token ){
+
+        String userId =jwtUtil.getKey(token);
+        if(userId == null){
+            return new ArrayList<>();
+
+        }
+
+
+
         return userDao.getUsers();
     }
 
