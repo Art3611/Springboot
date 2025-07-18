@@ -26,12 +26,12 @@ Mediante JavaScript y `fetch()`, el frontend envía solicitudes al backend en fo
 
 He implementado el algoritmo Argon2 para el hashing seguro de contraseñas en el backend con Java y Spring Boot.
 
-![Texto alternativo](ruta/de/la/imagen.extensión)
+![](img/Argon2.png)
 
 
 ### JSON Web Tokens (JWT) para autenticación
 
 Para manejar la autenticación y autorización, he utilizado JWT.
 
-![Texto alternativo](ruta/de/la/imagen.extensión)
+![](img/JWT1.png)
 
