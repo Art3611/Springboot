@@ -19,7 +19,7 @@ Aquí he profundizado en conceptos para el desarrollo web, enfocándome en la in
 He reforzado mi comprensión sobre cómo se comunican el frontend y el backend usando JSON.  
 Mediante JavaScript y `fetch()`, el frontend envía solicitudes al backend en formato JSON y recibe respuestas también en JSON.
 
-![](/fullStackTest/img/Json1.png)
+![](/img/Json1.png)
 
 
 ### Argon2 para el hashing de contraseñas
