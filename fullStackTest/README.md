@@ -32,6 +32,7 @@ He implementado el algoritmo Argon2 para el hashing seguro de contraseñas en el
 ### JSON Web Tokens (JWT) para autenticación
 
 Para manejar la autenticación y autorización, he utilizado JWT.
+La clase JWT se encuentra en la carpeta utils/JWTUtil
 
 ![](img/JWT1.png)
 
