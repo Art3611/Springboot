@@ -1,4 +1,4 @@
-// Call the dataTables jQuery plugin
+
 $(document).ready(function() {
   loadUsers();
 
@@ -23,7 +23,7 @@ async function loadUsers() {
 
   document.querySelector('#users tbody').innerHTML = listHtml;
 
-  // Inicializa DataTables después de insertar los datos
+
 
 $('#users').DataTable();
 

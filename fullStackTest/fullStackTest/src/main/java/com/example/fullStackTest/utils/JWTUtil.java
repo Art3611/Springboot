@@ -39,7 +39,7 @@ public class JWTUtil {
         long nowMillis = System.currentTimeMillis();
         Date now = new Date(nowMillis);
 
-        // Crea la clave secreta a partir de la propiedad
+
         SecretKey signingKey = Keys.hmacShaKeyFor(key.getBytes(StandardCharsets.UTF_8));
 
         JwtBuilder builder = Jwts.builder()
