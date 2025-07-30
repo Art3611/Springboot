@@ -1,4 +1,4 @@
-package entity;
+package com.myapp.invoicing.entity;
 
 import jakarta.persistence.*;
 import lombok.*;

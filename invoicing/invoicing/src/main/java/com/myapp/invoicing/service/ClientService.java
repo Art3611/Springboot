@@ -1,7 +1,8 @@
-package service;
+package com.myapp.invoicing.service;
 
-import entity.Client;
-import repository.ClientRepository;
+
+import com.myapp.invoicing.entity.Client;
+import com.myapp.invoicing.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

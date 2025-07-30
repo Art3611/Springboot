@@ -1,6 +1,7 @@
-package repository;
+package com.myapp.invoicing.repository;
 
-import entity.User;
+
+import com.myapp.invoicing.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

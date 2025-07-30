@@ -2,13 +2,11 @@
 services:
   mysql:
     image: mysql:8.0
-    container_name: facturacion-mysql
+    container_name: invoicing-mysql
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: facturacion_db
-      MYSQL_USER: freelancer
-      MYSQL_PASSWORD: freelancer123
+      MYSQL_DATABASE: invoicing_db
     ports:
       - "3306:3306"
     volumes:

@@ -1,7 +1,7 @@
-package service;
+package com.myapp.invoicing.service;
 
-import entity.User;
-import repository.UserRepository;
+import com.myapp.invoicing.entity.User;
+import com.myapp.invoicing.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +17,6 @@ public class UserService {
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
-
 
     public User createUser(User user) {
         return userRepository.save(user);

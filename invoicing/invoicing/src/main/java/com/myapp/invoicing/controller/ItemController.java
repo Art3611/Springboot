@@ -1,7 +1,8 @@
-package controller;
+package com.myapp.invoicing.controller;
 
-import entity.Item;
-import service.ItemService;
+
+import com.myapp.invoicing.entity.Item;
+import com.myapp.invoicing.service.ItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

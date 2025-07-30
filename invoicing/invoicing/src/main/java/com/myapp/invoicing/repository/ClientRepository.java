@@ -1,6 +1,7 @@
-package repository;
+package com.myapp.invoicing.repository;
 
-import entity.Client;
+
+import com.myapp.invoicing.entity.Client;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
