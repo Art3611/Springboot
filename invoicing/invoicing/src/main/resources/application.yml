@@ -1,4 +1,9 @@
 spring:
+
+  security:
+    user:
+      name: admin
+      password: admin
   datasource:
     url: jdbc:mysql://localhost:3306/invoicing_db?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
     username: root
@@ -16,3 +21,5 @@ spring:
 
 server:
   port: 8081
+
+
