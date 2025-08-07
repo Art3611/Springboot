@@ -9,5 +9,5 @@ import java.util.List;
 
 @Repository
 public interface ClientRepository extends JpaRepository<Client, Long> {
-    List<Client> findByUserId(Long userId); // para obtener clientes de un usuario específico
+    List<Client> findByUserId(Long userId);
 }

@@ -1,6 +1,7 @@
 package com.myapp.invoicing.service;
 
 import com.myapp.invoicing.entity.Invoice;
+import com.myapp.invoicing.entity.Item;
 import com.myapp.invoicing.repository.InvoiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,11 @@ public class InvoiceService {
     }
 
     public Invoice createInvoice(Invoice invoice) {
+        if (invoice.getItems() != null) {
+            for (Item item : invoice.getItems()) {
+                item.setInvoice(invoice);
+            }
+        }
         return invoiceRepository.save(invoice);
     }
 

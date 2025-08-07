@@ -1,5 +1,6 @@
 package com.myapp.invoicing.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -20,6 +21,7 @@ public class Item {
 
     @ManyToOne
     @JoinColumn(name = "invoice_id", nullable = false)
+    @JsonManagedReference
     private Invoice invoice;
 
     public Double getTotal() {

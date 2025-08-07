@@ -1,5 +1,6 @@
 package com.myapp.invoicing.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,7 +20,7 @@ public class Invoice {
 
     private LocalDate date;
 
-    private Double total;
+    //Que chato me haga un mapa para ver la relacion visualmente
 
     @ManyToOne
     @JoinColumn(name = "client_id", nullable = false)
@@ -30,11 +31,14 @@ public class Invoice {
     private User user;
 
     @OneToMany(mappedBy = "invoice", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<Item> items;
 
+    public Double getTotal() {
+        if (items == null) return 0.0;
+        return items.stream()
+                .mapToDouble(item -> item.getQuantity() * item.getUnitPrice())
+                .sum();
+    }
 
 }
-
-// Agregaremos los items luego:
-// @OneToMany(mappedBy = "invoice", cascade = CascadeType.ALL)
-// private List<Item> items;

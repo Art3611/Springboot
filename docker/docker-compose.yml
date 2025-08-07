@@ -1,0 +1,18 @@
+
+services:
+  mysql-db:  # Nombre del servicio (puedes usar otro nombre si quieres)
+    image: mysql:8.0  # Imagen oficial de MySQL
+    container_name: mysql-container  # Nombre personalizado del contenedor
+    restart: always  # Siempre intenta reiniciar el contenedor si falla
+    environment:  # Variables de entorno para inicializar MySQL
+      MYSQL_DATABASE: testing_db  # Nombre de la base de datos
+      MYSQL_USER: user  # Usuario personalizado
+      MYSQL_PASSWORD: user  # Contraseña del usuario
+      MYSQL_ROOT_PASSWORD: root # Contraseña del usuario root
+    ports:
+      - "3306:3306"  # Mapea el puerto local 3306 al del contenedor
+    volumes:
+      - mysql-data:/var/lib/mysql  # Volumen persistente para guardar datos
+
+volumes:
+  mysql-data:  # Definición del volumen (almacena los datos de forma persistente)
