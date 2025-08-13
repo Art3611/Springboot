@@ -1,12 +1,13 @@
 package com.myapp.invoicing.service;
 
+import com.myapp.invoicing.dto.UserDTO;
 import com.myapp.invoicing.entity.User;
 import com.myapp.invoicing.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -18,27 +19,36 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-    public User createUser(User user) {
-        return userRepository.save(user);
+    public UserDTO createUser(UserDTO userDTO) {
+        User user = new User();
+        user.setUsername(userDTO.getUsername());
+        user.setEmail(userDTO.getEmail());
+        User saved = userRepository.save(user);
+        return toDTO(saved);
     }
 
-
-    public List<User> getAllUsers() {
-        return userRepository.findAll();
+    public List<UserDTO> getAllUsers() {
+        return userRepository.findAll()
+                .stream()
+                .map(this::toDTO)
+                .collect(Collectors.toList());
     }
 
-
-    public Optional<User> getUserByEmail(String email) {
-        return userRepository.findByEmail(email);
+    public UserDTO getUserById(Long id) {
+        return userRepository.findById(id)
+                .map(this::toDTO)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
     }
-
-
-    public Optional<User> getUserById(Long id) {
-        return userRepository.findById(id);
-    }
-
 
     public void deleteUser(Long id) {
         userRepository.deleteById(id);
+    }
+
+    private UserDTO toDTO(User user) {
+        UserDTO dto = new UserDTO();
+        dto.setId(user.getId());
+        dto.setUsername(user.getUsername());
+        dto.setEmail(user.getEmail());
+        return dto;
     }
 }

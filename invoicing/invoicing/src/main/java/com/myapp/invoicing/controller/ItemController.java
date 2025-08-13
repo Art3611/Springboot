@@ -1,14 +1,12 @@
 package com.myapp.invoicing.controller;
 
-
-import com.myapp.invoicing.entity.Item;
+import com.myapp.invoicing.dto.ItemDTO;
 import com.myapp.invoicing.service.ItemService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/items")
@@ -21,26 +19,23 @@ public class ItemController {
         this.itemService = itemService;
     }
 
+    @PostMapping
+    public ItemDTO createItem(@Valid @RequestBody ItemDTO itemDTO) {
+        return itemService.createItem(itemDTO);
+    }
+
     @GetMapping
-    public List<Item> getAllItems() {
+    public List<ItemDTO> getAllItems() {
         return itemService.getAllItems();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Item> getItemById(@PathVariable Long id) {
-        Optional<Item> item = itemService.getItemById(id);
-        return item.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
-    }
-
-    @PostMapping
-    public ResponseEntity<Item> createItem(@RequestBody Item item) {
-        Item created = itemService.createItem(item);
-        return ResponseEntity.ok(created);
+    public ItemDTO getItemById(@PathVariable Long id) {
+        return itemService.getItemById(id);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteItem(@PathVariable Long id) {
+    public void deleteItem(@PathVariable Long id) {
         itemService.deleteItem(id);
-        return ResponseEntity.noContent().build();
     }
 }

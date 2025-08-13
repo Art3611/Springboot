@@ -1,22 +1,36 @@
 package com.myapp.invoicing.dto;
 
 import com.myapp.invoicing.entity.Invoice;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PastOrPresent;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.time.LocalDate;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @Getter
 @Setter
 public class InvoiceDTO {
 
     private Long id;
+
+    @NotNull(message = "Date is required")
+    @PastOrPresent(message = "Date cannot be in the future")
     private LocalDate date;
-    private Double total;
+
+    private Double total; // se calcula en backend, no se valida en entrada
+
+    @NotNull(message = "Client ID is required")
     private Long clientId;
+
+    @NotNull(message = "User ID is required")
     private Long userId;
+
+    @NotEmpty(message = "Invoice must have at least one item")
+    @Valid
     private List<ItemDTO> items;
 
     public InvoiceDTO convertToDTO(Invoice invoice) {
@@ -35,7 +49,7 @@ public class InvoiceDTO {
             itemDTO.setUnitPrice(item.getUnitPrice());
             itemDTO.setTotal(item.getTotal());
             return itemDTO;
-        }).collect(Collectors.toList());
+        }).toList();
 
         dto.setItems(itemsDTO);
         return dto;

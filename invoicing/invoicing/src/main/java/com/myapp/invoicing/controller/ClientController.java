@@ -1,12 +1,12 @@
 package com.myapp.invoicing.controller;
 
-import com.myapp.invoicing.entity.Client;
+import com.myapp.invoicing.dto.ClientDTO;
 import com.myapp.invoicing.service.ClientService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/clients")
@@ -20,22 +20,22 @@ public class ClientController {
     }
 
     @PostMapping
-    public Client createClient(@RequestBody Client client) {
-        return clientService.createClient(client);
+    public ClientDTO createClient(@Valid @RequestBody ClientDTO clientDTO) {
+        return clientService.createClient(clientDTO);
     }
 
     @GetMapping
-    public List<Client> getAllClients() {
+    public List<ClientDTO> getAllClients() {
         return clientService.getAllClients();
     }
 
     @GetMapping("/user/{userId}")
-    public List<Client> getClientsByUserId(@PathVariable Long userId) {
+    public List<ClientDTO> getClientsByUserId(@PathVariable Long userId) {
         return clientService.getClientsByUserId(userId);
     }
 
     @GetMapping("/{id}")
-    public Optional<Client> getClientById(@PathVariable Long id) {
+    public ClientDTO getClientById(@PathVariable Long id) {
         return clientService.getClientById(id);
     }
 
