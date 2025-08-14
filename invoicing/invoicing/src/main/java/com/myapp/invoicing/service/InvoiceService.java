@@ -39,7 +39,7 @@ public class InvoiceService {
 
         Invoice invoice = new Invoice();
         invoice.setDate(invoiceDTO.getDate());
-        invoice.setTotal(invoiceDTO.getTotal());
+        invoice.setDate(invoiceDTO.getDate());
         invoice.setClient(client);
         invoice.setUser(user);
 

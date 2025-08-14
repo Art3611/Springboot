@@ -21,7 +21,7 @@ public class UserService {
 
     public UserDTO createUser(UserDTO userDTO) {
         User user = new User();
-        user.setUsername(userDTO.getUsername());
+        user.setName(userDTO.getName());
         user.setEmail(userDTO.getEmail());
         User saved = userRepository.save(user);
         return toDTO(saved);
@@ -47,7 +47,7 @@ public class UserService {
     private UserDTO toDTO(User user) {
         UserDTO dto = new UserDTO();
         dto.setId(user.getId());
-        dto.setUsername(user.getUsername());
+        dto.setName(user.getName());
         dto.setEmail(user.getEmail());
         return dto;
     }

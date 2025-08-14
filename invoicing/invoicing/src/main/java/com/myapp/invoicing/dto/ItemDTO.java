@@ -13,6 +13,8 @@ public class ItemDTO {
 
     private Long id;
 
+    private Long invoiceId;
+
     @NotBlank(message = "Description is required")
     private String description;
 

@@ -36,9 +36,16 @@ public class ClientService {
     }
 
     public ClientDTO getClientById(Long id) {
-        return clientRepository.findById(id)
+        Client client = clientRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Client not found with id: " + id));
+        return toDTO(client);
+    }
+
+    public List<ClientDTO> getClientsByUserId(Long userId) {
+        return clientRepository.findByUserId(userId)
+                .stream()
                 .map(this::toDTO)
-                .orElseThrow(() -> new RuntimeException("Cliente no encontrado"));
+                .collect(Collectors.toList());
     }
 
     public void deleteClient(Long id) {
