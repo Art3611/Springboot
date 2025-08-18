@@ -1,6 +1,9 @@
 spring:
 
   security:
+
+  thymeleaf:
+    cache: false
     user:
       name: admin
       password: admin
