@@ -12,16 +12,16 @@ public class ClientDTO {
 
     private Long id;
 
-    @NotBlank(message = "El nombre es obligatorio")
-    @Size(max = 100, message = "El nombre no puede tener más de 100 caracteres")
+    @NotBlank(message = "Name is required")
+    @Size(max = 100, message = "Name can´t be more than 100 characters")
     private String name;
 
-    @NotBlank(message = "El email es obligatorio")
-    @Email(message = "El email debe tener un formato válido")
+    @NotBlank(message = "Email is required")
+    @Email(message = "Email must be valid")
     private String email;
 
-    @Size(max = 15, message = "El teléfono no puede tener más de 15 caracteres")
+    @Size(max = 15, message = "Maximum number is 15")
     private String phone;
 
-    private Long userId; // Para asociar el cliente con un usuario
+    private Long userId;
 }

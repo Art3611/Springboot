@@ -20,7 +20,7 @@ public class Invoice {
 
     private LocalDate date;
 
-    //Que chato me haga un mapa para ver la relacion visualmente
+
 
     @ManyToOne
     @JoinColumn(name = "client_id", nullable = false)
