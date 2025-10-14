@@ -15,7 +15,7 @@ Este proyecto fue creado con el objetivo de aprender y aplicar buenas prácticas
 | **Contenerización** | Docker & Docker Compose |
 | **ORM** | Hibernate / JPA |
 | **Dependencias adicionales** | Lombok, ModelMapper, Spring DevTools |
-| **IDE recomendado** | IntelliJ IDEA / VS Code / Eclipse |
+| **IDE'** | IntelliJ IDEA  |
 
 ---
 
