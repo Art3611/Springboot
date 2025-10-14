@@ -34,19 +34,20 @@ Este proyecto fue creado con el objetivo de aprender y aplicar buenas prácticas
 
 ## 🧩 Estructura del proyecto
 
+```bash
 src/
 ├── main/
-│ ├── java/com/example/invoicing/
-│ │ ├── controller/ # Controladores REST
-│ │ ├── dto/ # Clases DTO
-│ │ ├── entity/ # Entidades JPA
-│ │ ├── repository/ # Interfaces Repository
-│ │ ├── service/ # Lógica de negocio
-│ │ └── InvoicingApplication.java
-│ └── resources/
-│ ├── application.yml
-│ └── data.sql (opcional)
-├── test/ # Tests unitarios (por implementar)
+│   ├── java/com/example/invoicing/
+│   │   ├── controller/      # Controladores REST
+│   │   ├── dto/             # Clases DTO
+│   │   ├── entity/          # Entidades JPA
+│   │   ├── repository/      # Interfaces Repository
+│   │   ├── service/         # Lógica de negocio
+│   │   └── InvoicingApplication.java
+│   └── resources/
+│       ├── application.yml
+│       └── data.sql (opcional)
+├── test/                    # Tests unitarios (por implementar)
 ├── docker-compose.yml
 └── README.md
 
